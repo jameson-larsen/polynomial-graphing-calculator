@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Polynomial Graphing Calculator</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,100;1,200&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="index.css"></link>
+    </head>
+    <body>
+        <h1>POLYNOMIAL GRAPHING CALCULATOR</h1>
+        <form id="functionForm">
+            <label for="functionInput">Enter your polynomial coefficients as comma-separated values, in order from lowest to highest degree terms. <br> For example, for polynomial <strong>a + bx + cx<sup>2</sup></strong>, enter coefficients in order <strong>a, b, c</strong></label>
+            <input type="text" id="functionInput"></input>
+            <input type="submit" id="submitButton" value="Graph Function"></input>
+        </form>
+        <p id="error">Invalid input. Make sure your coefficients are numbers entered as a list of comma-separated values.</p>
+        <canvas id="graphArea" style="border:1px solid #000000;"></canvas>
+    </body>
+    <script src="scripts.js"></script>
+</html>

@@ -1,0 +1,45 @@
+* {
+    padding:0;
+    margin:0;
+    font-family: 'Montserrat', sans-serif;
+}
+body {
+    text-align:center;
+    background-color:lightgray;
+    padding:50px 0;
+}
+canvas {
+    margin:0 auto;
+    background-color:white;
+}
+h1 {
+    margin-bottom:20px;
+    padding:0 15px;
+}
+form {
+    margin-bottom:37px;
+    padding:0 15px;
+}
+label {
+    display:block;
+    margin-bottom:7px;
+}
+input[type=text] {
+    width:240px;
+    height:27px;
+}
+input[type=submit] {
+    padding:5px;
+}
+p {
+    color:red;
+    font-size:14px;
+    margin-bottom:10px;
+    display:none;
+    padding:0 15px;
+}
+@media only screen and (max-width: 400px) {
+    input[type=text] {
+        width:150px;
+    }
+}
