@@ -79,7 +79,6 @@ function hornersMethod(coefficients, x) {
 function drawGraph(coefficients) {
     //initial settings for canvas
     var c = document.getElementById("graphArea")
-    var height = c.height
     var ctx = c.getContext("2d")
     ctx.beginPath()
     ctx.strokeStyle ='red'
@@ -89,18 +88,20 @@ function drawGraph(coefficients) {
     ctx.moveTo(points[0], points[1])
     var x = 0
     //increment up to x = 10 and draw curve as we go
-    while(x <= 10 && points[1] <= height && points[1] >= 0) {
+    while(x <= 10) {
         x += 0.01
         points = transformCoordinates(x, hornersMethod(coefficients, x))
         ctx.lineTo(points[0], points[1])
         ctx.stroke()
     }
+    ctx.closePath()
     //reset variables
+    ctx.beginPath()
     points = transformCoordinates(0, hornersMethod(coefficients, 0))
     ctx.moveTo(points[0], points[1])
     x = 0
     //increment down to x = -10 and draw curve as we go
-    while(x >= -10 && points[1] <= height && points[1] >= 0) {
+    while(x >= -10) {
         x -= 0.01
         points = transformCoordinates(x, hornersMethod(coefficients, x))
         ctx.lineTo(points[0], points[1])
