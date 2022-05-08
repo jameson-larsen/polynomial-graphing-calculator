@@ -92,8 +92,8 @@ function drawGraph(coefficients) {
         x += 0.01
         points = transformCoordinates(x, hornersMethod(coefficients, x))
         ctx.lineTo(points[0], points[1])
-        ctx.stroke()
     }
+    ctx.stroke()
     ctx.closePath()
     //reset variables
     ctx.beginPath()
@@ -105,8 +105,8 @@ function drawGraph(coefficients) {
         x -= 0.01
         points = transformCoordinates(x, hornersMethod(coefficients, x))
         ctx.lineTo(points[0], points[1])
-        ctx.stroke()
     }
+    ctx.stroke()
     ctx.closePath();
 }
 
