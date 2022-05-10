@@ -87,27 +87,69 @@ function drawGraph(coefficients) {
     var points = transformCoordinates(0, hornersMethod(coefficients, 0))
     ctx.moveTo(points[0], points[1])
     var x = 0
+    var outOfBounds = false
+    var undrawnPoints = 0
     //increment up to x = 10 and draw curve as we go
     while(x <= 10) {
         x += 0.01
-        points = transformCoordinates(x, hornersMethod(coefficients, x))
-        ctx.lineTo(points[0], points[1])
+        var y = hornersMethod(coefficients, x)
+        var nextY = hornersMethod(coefficients, x + 0.01)
+        points = transformCoordinates(x, y)
+        if((y >= 15 || y <= -15) && !outOfBounds) {
+            ctx.lineTo(points[0], points[1])
+            ctx.stroke()
+            ctx.closePath()
+            undrawnPoints = 0
+            outOfBounds = true
+        }
+        else if((y >= 15 || y <= -15) && (nextY >= -15 && nextY <= 15)) {
+            ctx.beginPath()
+            ctx.moveTo(points[0], points[1])
+            outOfBounds = false
+        }
+        else if(y <= 15 && y >= -15) {
+            ctx.lineTo(points[0], points[1])
+            undrawnPoints += 1
+        }
     }
-    ctx.stroke()
-    ctx.closePath()
+    if(undrawnPoints > 0) {
+        ctx.stroke()
+        ctx.closePath()
+    }
     //reset variables
     ctx.beginPath()
     points = transformCoordinates(0, hornersMethod(coefficients, 0))
     ctx.moveTo(points[0], points[1])
     x = 0
+    outOfBounds = false
+    undrawnPoints = 0
     //increment down to x = -10 and draw curve as we go
     while(x >= -10) {
         x -= 0.01
-        points = transformCoordinates(x, hornersMethod(coefficients, x))
-        ctx.lineTo(points[0], points[1])
+        var y = hornersMethod(coefficients, x)
+        var nextY = hornersMethod(coefficients, x - 0.01)
+        points = transformCoordinates(x, y)
+        if((y >= 15 || y <= -15) && !outOfBounds) {
+            ctx.lineTo(points[0], points[1])
+            ctx.stroke()
+            ctx.closePath()
+            undrawnPoints = 0
+            outOfBounds = true
+        }
+        else if((y >= 15 || y <= -15) && (nextY >= -15 && nextY <= 15)) {
+            ctx.beginPath()
+            ctx.moveTo(points[0], points[1])
+            outOfBounds = false
+        }
+        else if(y <= 15 && y >= -15) {
+            ctx.lineTo(points[0], points[1])
+            undrawnPoints += 1
+        }
     }
-    ctx.stroke()
-    ctx.closePath();
+    if(undrawnPoints > 0) {
+        ctx.stroke()
+        ctx.closePath();
+    }
 }
 
 function getUserInput(ev) {
